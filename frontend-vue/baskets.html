@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Megastore</title>
+    <link href="styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="https://unpkg.com/vue"> </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="megastoreController.html">Megastore Controller</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="baskets.html">Baskets</a></li>
+          <li><a href="items.html">Items</a></li>
+        </ul>
+      </div>
+    </nav>
+
+  </head>
+
+  <body>
+
+
+    <div id="basket" class="container">
+      <h1>Baskets Controller </h1>
+
+      <button v-on:click="getAllBaskets" class="btn btn-success"> Get All Baskets </button>
+      <button v-on:click="clearDiv" class="btn btn-warning">> Clear </button>
+
+      <div  id="MyDiv" class="panel panel-warning" v-bind:style="{ height: divHeight + 'px'}"  >
+
+
+        <ul class="list-group" v-for="basket in baskets">
+          <li   class="list-group-item"  v-for="(val, key) in basket"> {{key }}  : {{val}} </li>
+          <br> <br>
+        </ul>
+
+        <!--
+            <template v-for="basket in baskets">
+                  <div v-for="(val,key) in basket">
+                    <p> {{ key }} : {{ val }} </p>
+
+                    </div>
+                    <p> ------------------------------------- </p>
+
+                  </template>
+
+                -->
+              </div>
+
+              <button v-on:click="getBasketWithId" class="btn btn-success"> Get Basket with ID </button>
+              <button  id="clear1Button" v-on:click="clearDiv2" class="btn btn-warning"> > Clear </button>
+
+              <form>
+                <label> ID: </label>
+                <input type="text" class="form-control"  v-model="id"/>
+              </form>
+
+              <div v-if="basket != 404" id="MyDiv2"   class="panel panel-warning" v-bind:style="{ height: div2Height + 'px'}">
+                <!--
+                <div v-for="(val,key) in basket">
+                <p> {{ key + 1 }} - {{ val }} </p>
+              -->
+              <ul class="list-group">
+                <li   class="list-group-item"  v-for="(val, key) in basket"> {{key + 1  }}  -  {{val}} </li>
+                <br> <br>
+              </ul>
+      </div>
+      <div v-else >
+        <h2> Wrong ID, Error  {{basket}} </h2>
+      </div>
+
+      <button v-on:click="showDiv3" class="btn btn-success">Add new Basket </button>
+
+      <div id="MyDiv3"  class="panel panel-warning" v-bind:style="{ height: div3Height + 'px'}">
+
+        <form id="myForm">
+          <label> VAT  </label>
+          <input type="text" v-model="VAT" class="form-control" > </input>
+          <label> Address  </label>
+          <input type="text" v-model="address" class="form-control"> </input>
+          <label> Basket ID  </label>
+          <input type="text" v-model="basketID"class="form-control"> </input>
+          <label> Cashier  </label>
+          <input type="text" v-model="cashier"class="form-control" > </input>
+          <label> Net Amount  </label>
+          <input type="text"  v-model='netAmount'class="form-control"> </input>
+          <label> Total Amount  </label>
+          <input type="text" v-model='totalAmount'class="form-control" > </input>
+        </form>
+
+
+        <button v-on:click="addBasket" class="btn btn-default">Add basket to database</button>
+        <h2 id="show"> Status: </h2>
+
+      </div>
+
+      <button v-on:click="deleteBasket" class="btn btn-success">Delete Basket </button>
+      <div  class="panel panel-warning">
+        <form>
+          <label> ID </label>
+          <input type="text" class="form-control" v-model='deleteID'> </input>
+          <h3> {{deleteSuccess}} </h3>
+      </div>
+
+
+      <button v-on:click="showDiv4" class="btn btn-success">Update Basket </button>
+
+      <div id="MyDiv4"  class="panel panel-warning" v-bind:style="{ height: div4Height + 'px'}">
+
+        <form id="myForm2">
+          <label> VAT  </label>
+          <input type="text" v-model="updateVAT" class="form-control" > </input>
+          <label> Address  </label>
+          <input type="text" v-model="updateAddress" class="form-control"> </input>
+          <label> Basket ID  </label>
+          <input type="text" v-model="updateBasketID"class="form-control"> </input>
+          <label> Cashier  </label>
+          <input type="text" v-model="updateCashier"class="form-control" > </input>
+          <label> Net Amount  </label>
+          <input type="text"  v-model='updateNetAmount'class="form-control"> </input>
+          <label> Total Amount  </label>
+          <input type="text" v-model='updateTotalAmount'class="form-control" > </input>
+        </form>
+
+        <button v-on:click="updateBasket" class="btn btn-default">Update basket</button>
+        <h2 id="show2"> Status: </h2>
+      </div>
+
+    </div>
+
+    <script src="basketApp.js"> </script>
+
+  </body>
+</html>

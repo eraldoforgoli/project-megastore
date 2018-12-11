@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Megastore</title>
+  <link href="styles.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://unpkg.com/vue"> </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="megastoreController.html">Megastore Controller</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="baskets.html">Baskets</a></li>
+          <li><a href="items.html">Items</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+  </head>
+
+  <body>
+
+
+    <div id="item" class="container">
+<h1>Items Controller </h1>
+
+<button v-on:click="getAllItems" class="btn btn-success"> Get All Items </button>
+<button v-on:click="clearDiv" class="btn btn-warning">> Clear </button>
+
+<div  id="MyDiv" class="panel panel-warning" v-bind:style="{ height: divHeight + 'px'}"  >
+
+
+
+  <ul class="list-group" v-for="item in items">
+    <li   class="list-group-item"  v-for="(val, key) in item"> {{key }}  : {{val}} </li>
+    <br> <br>
+  </ul>
+
+</div>
+
+<button v-on:click="getItemWithId" class="btn btn-success"> Get Item with ID </button>
+<button  id="clear1Button" v-on:click="clearDiv2" class="btn btn-warning"> > Clear </button>
+
+<form>
+ <label> ID: </label>
+<input type="text"class="form-control"  v-model="id"/>
+
+</form>
+
+<div v-if="item != 404" id="MyDiv2"   class="panel panel-warning" v-bind:style="{ height: div2Height + 'px'}">
+<div v-for="(val,key) in item">
+<p> {{ key + 1 }} - {{ val }} </p>
+
+</div>
+</div>
+<div v-else >
+<h2> Wrong ID, Error  {{item}} </h2>
+</div>
+
+<!--
+"VAT": 10,
+"address": "Rruga e Durresit",
+"basketID": 1,
+"cashier": " Eralldoo",
+"netAmount": 49.5,
+"totalAmount": 45
+
+-->
+
+<button v-on:click="showDiv3" class="btn btn-success">Add new Item </button>
+
+<div id="MyDiv3"  class="panel panel-warning" v-bind:style="{ height: div3Height + 'px'}">
+
+<form id="myForm">
+<label> Discount  </label>
+<input type="text" v-model="discount" class="form-control" > </input>
+<label> In Offer  </label>
+<input type="text" v-model="inOffer" class="form-control"> </input>
+<label> Item ID  </label>
+<input type="text" v-model="itemId" class="form-control"> </input>
+<label> Name  </label>
+<input type="text" v-model="name"class="form-control" > </input>
+<label> Partly Independence  </label>
+<input type="text"  v-model='partlyIndependence'class="form-control"> </input>
+<label> Price  </label>
+<input type="text" v-model='price'class="form-control" > </input>
+
+</form>
+
+
+<button v-on:click="addItem" class="btn btn-default">Add item to database</button>
+
+<h2 id="show"> Status: </h2>
+
+</div>
+
+<button v-on:click="deleteItem" class="btn btn-success">Delete Item </button>
+<div  class="panel panel-warning">
+<form>
+<label> ID: </label>
+<input type="text" class="form-control"  v-model='deleteID'> </input>
+<h3> {{deleteSuccess}} </h3>
+</div>
+
+
+<button v-on:click="showDiv4" class="btn btn-success">Update Item </button>
+
+<div id="MyDiv4"  class="panel panel-warning" v-bind:style="{ height: div4Height + 'px'}">
+
+<form id="myForm2">
+  <label> Discount  </label>
+  <input type="text" v-model="updateDiscount" class="form-control" > </input>
+  <label> In Offer  </label>
+  <input type="text" v-model="updateInOffer" class="form-control"> </input>
+  <label> Item ID  </label>
+  <input type="text" v-model="updateItemId" class="form-control"> </input>
+  <label> Name  </label>
+  <input type="text" v-model="updateName" class="form-control" > </input>
+  <label> Partly Independence  </label>
+  <input type="text"  v-model="updatePartlyIndependence" class="form-control"> </input>
+  <label> Price  </label>
+  <input type="text" v-model="updatePrice" class="form-control" > </input>
+</form>
+
+
+<button v-on:click="updateItem" class="btn btn-default">Update Item</button>
+
+<h2 id="show2"> Status: </h2>
+
+</div>
+
+
+
+    </div>
+
+    <script src="itemApp.js"> </script>
+
+  </body>
+</html>

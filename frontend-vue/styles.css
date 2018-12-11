@@ -1,0 +1,46 @@
+
+#MyDiv{
+overflow-y: scroll;
+align-items: center;
+}
+
+#MyDiv2{
+overflow-y: scroll;
+}
+
+#MyDiv3{
+  overflow-y: scroll;
+}
+#MyDiv4{
+  overflow-y: scroll;
+}
+
+#vue-app {
+    padding-left: 100px;
+    padding-top: 50px;
+}
+
+#clear1Button{
+  padding-bottom: : 60px;
+
+}
+
+
+ input {
+   width: 30% !important;
+
+  }
+/*
+  button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+   display: inline-flex;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+
+  }

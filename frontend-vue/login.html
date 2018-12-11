@@ -1,0 +1,50 @@
+
+
+<html>
+  <head>
+
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="loginStyle.css">
+  <!--   <link href="loginStyle.css"> -->
+
+    <script src="https://unpkg.com/vue"> </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<!------ Include the above in your HEAD tag ---------->
+  </head>
+<body>
+  <div class="container" id="login">  <h2> Admin Login </h2>
+          <div class="card card-container">
+              <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+              <p id="profile-name" class="profile-name-card"></p>
+
+              <form class="form-signin">
+                  <span id="reauth-email" class="reauth-email"></span>
+                  <input  id="inputEmail" class="form-control" placeholder="Username" v-model="username" required autofocus>
+                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" v-model="password" required>
+                  <div id="remember" class="checkbox">
+                      <label>
+                          <input type="checkbox" value="remember-me"> Remember me
+                      </label>
+                  </div>
+              </form><!-- /form -->
+              <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" v-on:click="identify(username, password)"
+              >Log in</button>
+
+              <div v-if="status == 'OK'" v-bind:placeholder="redirect()">
+                <!-- co emrin e cashierit te basket controller.. _-->
+              </div>
+              
+
+          </div><!-- /card-container -->
+      </div><!-- /container -->
+
+<script src="loginApp.js"> </script>
+
+
+
+</body>
+</html>
